@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Open test plan</title>
+</head>
+
+<body>
+    <script src="lib/VSS.SDK.min.js"></script>
+
+    <script type="text/javascript">
+
+        VSS.init({
+            explicitNotifyLoaded: true,
+            usePlatformScripts: true
+        });
+
+        VSS.ready(() => {
+            VSS.register("{PUBLISHER_ID}.open-test-plan-extension.open-test-plan-work-item-menu", (context) => {
+                return {
+                    execute: (actionContext) => {
+                        if (actionContext.workItemTypeName === 'Test Plan') {
+                            let uri = context.account.uri + '/' + actionContext.currentProjectName + '/_testManagement?planId=' + actionContext.workItemId;
+                            window.open(uri);
+                        }
+
+                        if (actionContext.rows.length > 0) {
+                            console.log("from rows");
+                            for (let i = 0; i < actionContext.rows.length; i++) {
+                                if (actionContext.rows[i][1] === 'Test Plan') {
+                                    let uri = context.account.uri + '/' + actionContext.rows[i][2] + '/_testManagement?planId=' + actionContext.rows[i][0];
+                                    window.open(uri);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            VSS.notifyLoadSucceeded();
+        });
+    </script>
+</body>
+
+</html>
