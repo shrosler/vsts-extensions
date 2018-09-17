@@ -4,7 +4,7 @@
     "publisher": "{PUBLISHER_ID}",
     "version": "1.0.0",
     "name": "Open Test Plan",
-    "description": "Open Test Plan from Work",
+    "description": "Open Test Plan View from Queries",
     "public": true,
     "categories": ["Plan and track"],
     "targets": [
@@ -16,7 +16,7 @@
 		{  
 			"id": "open-test-plan-work-item-menu",  
 			"type": "ms.vss-web.action",  
-			"description": "Toolbar item which open the test plan at the test management hub",  
+			"description": "Toolbar item which open the test plan view at the test management hub",  
 			"targets": [  
 				"ms.vss-work-web.work-item-context-menu"  
 			],  
